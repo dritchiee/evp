@@ -15,12 +15,14 @@
 
 package org.strongswan.android.logic;
 
-import java.security.Security;
-
-import org.strongswan.android.security.LocalCertificateKeyStoreProvider;
-
 import android.app.Application;
 import android.content.Context;
+import android.content.Intent;
+
+import org.strongswan.android.data.Prefs;
+import org.strongswan.android.security.LocalCertificateKeyStoreProvider;
+
+import java.security.Security;
 
 public class StrongSwanApplication extends Application
 {
@@ -35,6 +37,8 @@ public class StrongSwanApplication extends Application
 	{
 		super.onCreate();
 		StrongSwanApplication.mContext = getApplicationContext();
+		Prefs.init(mContext);
+		startService(new Intent(mContext, ManagedConfigurationService.class));
 	}
 
 	/**

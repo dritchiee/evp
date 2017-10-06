@@ -40,6 +40,26 @@ public class VpnProfile implements Cloneable
 	private UUID mUUID;
 	private long mId = -1;
 
+	private boolean mManagedConfiguration;
+	private String userCertificatePassword;
+	private String userCertificateData;
+
+	public String getUserCertificatePassword() {
+		return userCertificatePassword;
+	}
+
+	public void setUserCertificatePassword(String userCertificatePassword) {
+		this.userCertificatePassword = userCertificatePassword;
+	}
+
+	public String getUserCertificateData() {
+		return userCertificateData;
+	}
+
+	public void setUserCertificateData(String userCertificateData) {
+		this.userCertificateData = userCertificateData;
+	}
+
 	public enum SelectedAppsHandling
 	{
 		SELECTED_APPS_DISABLE(0),
@@ -57,8 +77,8 @@ public class VpnProfile implements Cloneable
 		{
 			return mValue;
 		}
-	}
 
+	}
 	public VpnProfile()
 	{
 		this.mUUID = UUID.randomUUID();
@@ -291,6 +311,7 @@ public class VpnProfile implements Cloneable
 	{
 		this.mFlags = flags;
 	}
+
 
 	@Override
 	public String toString()

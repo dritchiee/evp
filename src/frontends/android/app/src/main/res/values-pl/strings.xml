@@ -178,4 +178,19 @@
     <string name="disconnect_active_connection">This will disconnect the active VPN connection!</string>
     <string name="connect">Połącz</string>
 
+    <!--Manifest Restrictions-->
+    <string name="user_cert_alias">Alias certyfiaktu użytkownika</string>
+    <string name="ca_cert_data">Certyfikat CA w postaci binarnej</string>
+    <string name="ca_cert_data_description">Certyfikat CA w postaci binarnej, który zostanie zaimportowany do aplikacji. Zostawiając puste pole certyfikat zostanie automatycznie wyrabrany o ile był wcześniej wgrany na urządzenie.</string>
+    <string name="use_advanced_settings">Używaj konfiguracji zaawansowanej</string>
+    <string name="advanced_server_identity">Server identity</string>
+    <string name="advanced_mtu_description">In case the default value is unsuitable for a particular network. Value has to be in range from 1280 – 1500</string>
+    <string name="advanced_subnets_whitelist_title">Subnets whitelist</string>
+    <string name="advanced_subnets_blackist_title">Subnets blacklist</string>
+    <string name="advanced_applications_behavior_description">Wybierając opcję inną niż "All applications use the VPN" należy wypełnić również pole dla klucza  advanced_applications_list</string>
+    <string name="advanced_applications_behavior_title">Określa w jaki sposób aplikacje będą działały z VPN.</string>
+    <string name="advanced_applications_list_title">Lista aplikacji</string>
+    <string name="advanced_applications_list_description">Lista aplikacji, na które oddziałuje klucz advanced_applications_behavior"</string>
+    <string name="allow_other_vpn_settings_description">Setting this to false will block adding other VPN Profiles. Any existing profiles will be deleted</string>
+    <string name="allow_other_vpn_settings_title">Allow add other VPN profiles</string>
 </resources>

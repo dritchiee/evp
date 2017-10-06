@@ -37,9 +37,11 @@ import android.security.KeyChainException;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
 import android.system.OsConstants;
+import android.util.Base64;
 import android.util.Log;
 
 import org.strongswan.android.R;
+import org.strongswan.android.data.Prefs;
 import org.strongswan.android.data.VpnProfile;
 import org.strongswan.android.data.VpnProfile.SelectedAppsHandling;
 import org.strongswan.android.data.VpnProfileDataSource;
@@ -53,18 +55,27 @@ import org.strongswan.android.utils.IPRange;
 import org.strongswan.android.utils.IPRangeSet;
 import org.strongswan.android.utils.SettingsWriter;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.IOException;
 import java.net.Inet4Address;
 import java.net.Inet6Address;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.security.KeyStore;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
+import java.security.UnrecoverableKeyException;
 import java.security.cert.CertificateEncodingException;
+import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.SortedSet;
+
+import static org.strongswan.android.logic.ManagedConfigurationContract.Controller.ALLOW_ADD_OTHER_PROFILES;
 
 public class CharonVpnService extends VpnService implements Runnable, VpnStateService.VpnStateListener
 {
@@ -80,6 +91,7 @@ public class CharonVpnService extends VpnService implements Runnable, VpnStateSe
 	private VpnProfile mCurrentProfile;
 	private volatile String mCurrentCertificateAlias;
 	private volatile String mCurrentUserCertificateAlias;
+	private volatile char[] mCurrentUserCertificatePassword;
 	private VpnProfile mNextProfile;
 	private volatile boolean mProfileUpdated;
 	private volatile boolean mTerminate;
@@ -120,6 +132,7 @@ public class CharonVpnService extends VpnService implements Runnable, VpnStateSe
 	static final int STATE_LOOKUP_ERROR = 5;
 	static final int STATE_UNREACHABLE_ERROR = 6;
 	static final int STATE_GENERIC_ERROR = 7;
+	private String mCurrentCertificateData;
 
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId)
@@ -240,6 +253,12 @@ public class CharonVpnService extends VpnService implements Runnable, VpnStateSe
 						 * a possible deadlock during deinitialization */
 						mCurrentCertificateAlias = mCurrentProfile.getCertificateAlias();
 						mCurrentUserCertificateAlias = mCurrentProfile.getUserCertificateAlias();
+						try {
+							mCurrentUserCertificatePassword = mCurrentProfile.getUserCertificatePassword().toCharArray();
+						} catch (NullPointerException ignored){}
+						try {
+							mCurrentCertificateData = mCurrentProfile.getUserCertificateData();
+						} catch (NullPointerException ignored){}
 
 						startConnection(mCurrentProfile);
 						mIsDisconnecting = false;
@@ -639,6 +658,18 @@ public class CharonVpnService extends VpnService implements Runnable, VpnStateSe
 	 */
 	private PrivateKey getUserKey() throws KeyChainException, InterruptedException
 	{
+		if (!Prefs.get(ALLOW_ADD_OTHER_PROFILES, true)) {
+			try {
+				KeyStore ks = KeyStore.getInstance("PKCS12");
+				ks.load(new ByteArrayInputStream(Base64.decode(mCurrentCertificateData, 0)), mCurrentUserCertificatePassword);
+				PrivateKey key = (PrivateKey) ks.getKey(mCurrentUserCertificateAlias, mCurrentUserCertificatePassword);
+				Log.e("CharonVpnService", "getUserKey: after key");
+				return key;
+			} catch (KeyStoreException | NoSuchAlgorithmException | UnrecoverableKeyException | CertificateException | IOException e) {
+				e.printStackTrace();
+			}
+		}
+
 		return KeyChain.getPrivateKey(getApplicationContext(), mCurrentUserCertificateAlias);
 	}
 

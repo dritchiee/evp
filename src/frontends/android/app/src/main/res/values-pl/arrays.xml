@@ -22,6 +22,14 @@
         <item>IKEv2 EAP-TLS (certyfikat)</item>
         <item>IKEv2 EAP-TNC (użytkownik/hasło)</item>
     </string-array>
+    
+    <string-array name="vpn_types_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
 
     <!-- the order here must match the enum entries in VpnProfile.java -->
     <string-array name="apps_handling">
@@ -29,4 +37,11 @@
         <item>Exclude selected applications from the VPN</item>
         <item>Only selected applications use the VPN</item>
     </string-array>
+
+    <string-array name="apps_handling_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
 </resources>

@@ -129,6 +129,7 @@
                 <action android:name="android.net.VpnService" />
             </intent-filter>
         </service>
+        <service android:name=".logic.ManagedConfigurationService"/>
 
         <provider
             android:name=".data.LogContentProvider"

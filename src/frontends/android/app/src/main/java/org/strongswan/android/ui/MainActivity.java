@@ -46,6 +46,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import org.strongswan.android.R;
+import org.strongswan.android.data.Prefs;
 import org.strongswan.android.data.VpnProfile;
 import org.strongswan.android.data.VpnProfileDataSource;
 import org.strongswan.android.data.VpnType.VpnTypeFeature;
@@ -58,6 +59,8 @@ import org.strongswan.android.ui.VpnProfileListFragment.OnVpnProfileSelectedList
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.strongswan.android.logic.ManagedConfigurationContract.Controller.ALLOW_ADD_OTHER_PROFILES;
 
 public class MainActivity extends AppCompatActivity implements OnVpnProfileSelectedListener
 {
@@ -169,7 +172,9 @@ public class MainActivity extends AppCompatActivity implements OnVpnProfileSelec
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu)
 	{
-		getMenuInflater().inflate(R.menu.main, menu);
+		if (Prefs.get(ALLOW_ADD_OTHER_PROFILES, true)) {
+			getMenuInflater().inflate(R.menu.main, menu);
+		}
 		return true;
 	}
 
@@ -277,7 +282,9 @@ public class MainActivity extends AppCompatActivity implements OnVpnProfileSelec
 	@Override
 	public void onVpnProfileSelected(VpnProfile profile)
 	{
-		startVpnProfile(profile, true);
+		if (!mService.getState().equals(State.CONNECTED) && Prefs.get(ALLOW_ADD_OTHER_PROFILES, true)) {
+			startVpnProfile(profile, true);
+		}
 	}
 
 	/**

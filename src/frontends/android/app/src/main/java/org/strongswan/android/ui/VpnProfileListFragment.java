@@ -40,6 +40,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import org.strongswan.android.R;
+import org.strongswan.android.data.Prefs;
 import org.strongswan.android.data.VpnProfile;
 import org.strongswan.android.data.VpnProfileDataSource;
 import org.strongswan.android.ui.adapter.VpnProfileAdapter;
@@ -49,6 +50,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+
+import static org.strongswan.android.logic.ManagedConfigurationContract.Controller.ALLOW_ADD_OTHER_PROFILES;
 
 public class VpnProfileListFragment extends Fragment
 {
@@ -143,6 +146,8 @@ public class VpnProfileListFragment extends Fragment
 		{
 			mReadOnly = args.getBoolean("read_only", mReadOnly);
 		}
+
+		mReadOnly = !Prefs.get(ALLOW_ADD_OTHER_PROFILES, true);
 
 		if (!mReadOnly)
 		{
