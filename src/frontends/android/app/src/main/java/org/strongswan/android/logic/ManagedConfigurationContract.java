@@ -3,7 +3,7 @@ package org.strongswan.android.logic;
 
 public interface ManagedConfigurationContract {
     interface Controller {
-        String ALLOW_ADD_OTHER_PROFILES   = "allow_other_vpn_settings";
+        String ALLOW_MODIFY_VPN_PROFILE   = "allow_modify_vpn_profile";
         String HOST                       = "host";
         String VPN_TYPE                   = "vpn_type";
         String USER_CERT_DATA             = "user_cert_data";
@@ -24,7 +24,12 @@ public interface ManagedConfigurationContract {
         String ADVANCED_APPS_BEHAVIOR     = "advanced_applications_behavior";
         String ADVANCED_APPS_LIST         = "advanced_applications_list";
 
+        String HAS_MANAGED_CONFIG      = "has_managed_config";
+        String CLOSE_APP_AFTER_CONNECT = "close_app_after_vpn_connect";
+
+
         void onServiceStarted();
+
         void onConfigurationChange();
     }
 }

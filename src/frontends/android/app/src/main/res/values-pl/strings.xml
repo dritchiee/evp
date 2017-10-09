@@ -193,4 +193,6 @@
     <string name="advanced_applications_list_description">Lista aplikacji, na które oddziałuje klucz advanced_applications_behavior"</string>
     <string name="allow_other_vpn_settings_description">Setting this to false will block adding other VPN Profiles. Any existing profiles will be deleted</string>
     <string name="allow_other_vpn_settings_title">Allow add other VPN profiles</string>
+    <string name="close_app_after_vpn_connect_title">Minimalizuj aplikację po nawiązaniu połączenia VPN</string>
+    <string name="close_app_after_vpn_connect_description">Wartość określa czy po nawiązaniu połączenia VPN aplikacja ma być automatycznie minimalizowana</string>
 </resources>

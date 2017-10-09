@@ -21,10 +21,8 @@ import android.app.Dialog;
 import android.app.Service;
 import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.RestrictionsManager;
 import android.content.ServiceConnection;
 import android.net.VpnService;
 import android.os.AsyncTask;
@@ -62,8 +60,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.strongswan.android.logic.ManagedConfigurationContract.Controller.ALLOW_ADD_OTHER_PROFILES;
-import static org.strongswan.android.logic.ManagedConfigurationContract.Controller.HOST;
+import static org.strongswan.android.logic.ManagedConfigurationContract.Controller.ALLOW_MODIFY_VPN_PROFILE;
+import static org.strongswan.android.logic.ManagedConfigurationContract.Controller.CLOSE_APP_AFTER_CONNECT;
 
 public class MainActivity extends AppCompatActivity implements OnVpnProfileSelectedListener
 {
@@ -175,7 +173,7 @@ public class MainActivity extends AppCompatActivity implements OnVpnProfileSelec
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu)
 	{
-		if (Prefs.get(ALLOW_ADD_OTHER_PROFILES, true)) {
+		if (Prefs.get(ALLOW_MODIFY_VPN_PROFILE, true)) {
 			getMenuInflater().inflate(R.menu.main, menu);
 		}
 		return true;
@@ -275,8 +273,7 @@ public class MainActivity extends AppCompatActivity implements OnVpnProfileSelec
 					Intent intent = new Intent(this, CharonVpnService.class);
 					intent.putExtras(mProfileInfo);
 					this.startService(intent);
-					String host = ((RestrictionsManager) getSystemService(Context.RESTRICTIONS_SERVICE)).getApplicationRestrictions().getString(HOST);
-					if (host != null && !host.isEmpty()) {
+					if (Prefs.get(CLOSE_APP_AFTER_CONNECT, false)) {
 						finish();
 					}
 				}
@@ -289,7 +286,7 @@ public class MainActivity extends AppCompatActivity implements OnVpnProfileSelec
 	@Override
 	public void onVpnProfileSelected(VpnProfile profile)
 	{
-		if (!mService.getState().equals(State.CONNECTED) && !Prefs.get(ALLOW_ADD_OTHER_PROFILES, true)) {
+		if (!mService.getState().equals(State.CONNECTED)) {
 			startVpnProfile(profile, true);
 		}
 	}

@@ -51,7 +51,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
-import static org.strongswan.android.logic.ManagedConfigurationContract.Controller.ALLOW_ADD_OTHER_PROFILES;
+import static org.strongswan.android.logic.ManagedConfigurationContract.Controller.ALLOW_MODIFY_VPN_PROFILE;
 
 public class VpnProfileListFragment extends Fragment
 {
@@ -147,7 +147,7 @@ public class VpnProfileListFragment extends Fragment
 			mReadOnly = args.getBoolean("read_only", mReadOnly);
 		}
 
-		mReadOnly = !Prefs.get(ALLOW_ADD_OTHER_PROFILES, true);
+		mReadOnly = !Prefs.get(ALLOW_MODIFY_VPN_PROFILE, true);
 
 		if (!mReadOnly)
 		{

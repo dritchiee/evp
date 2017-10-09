@@ -86,7 +86,9 @@ class ManagedConfigurationController implements ManagedConfigurationContract.Con
             vpnProfile.setSelectedApps(bundle.getString(ADVANCED_APPS_LIST));
         }
 
-        Prefs.put(ALLOW_ADD_OTHER_PROFILES, bundle.getBoolean(ALLOW_ADD_OTHER_PROFILES));
+        Prefs.put(ALLOW_MODIFY_VPN_PROFILE, bundle.getBoolean(ALLOW_MODIFY_VPN_PROFILE));
+        Prefs.put(HAS_MANAGED_CONFIG, true);
+        Prefs.put(CLOSE_APP_AFTER_CONNECT, bundle.getBoolean(CLOSE_APP_AFTER_CONNECT));
 
         VpnProfileDataSource dataSource = new VpnProfileDataSource(StrongSwanApplication.getContext());
         dataSource.open();

@@ -2,11 +2,18 @@
 <restrictions xmlns:android="http://schemas.android.com/apk/res/android">
 
     <restriction
-        android:key="allow_other_vpn_settings"
+        android:key="allow_modify_vpn_profile"
         android:defaultValue="true"
         android:restrictionType="bool"
         android:description="@string/allow_other_vpn_settings_description"
         android:title="@string/allow_other_vpn_settings_title"/>
+
+    <restriction
+        android:key="close_app_after_vpn_connect"
+        android:defaultValue="false"
+        android:restrictionType="bool"
+        android:title="@string/close_app_after_vpn_connect_title"
+        android:description="@string/close_app_after_vpn_connect_description"/>
 
     <restriction
         android:key="host"

@@ -75,7 +75,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.SortedSet;
 
-import static org.strongswan.android.logic.ManagedConfigurationContract.Controller.ALLOW_ADD_OTHER_PROFILES;
+import static org.strongswan.android.logic.ManagedConfigurationContract.Controller.ALLOW_MODIFY_VPN_PROFILE;
+import static org.strongswan.android.logic.ManagedConfigurationContract.Controller.HAS_MANAGED_CONFIG;
 
 public class CharonVpnService extends VpnService implements Runnable, VpnStateService.VpnStateListener
 {
@@ -658,7 +659,7 @@ public class CharonVpnService extends VpnService implements Runnable, VpnStateSe
 	 */
 	private PrivateKey getUserKey() throws KeyChainException, InterruptedException
 	{
-		if (!Prefs.get(ALLOW_ADD_OTHER_PROFILES, true)) {
+		if (Prefs.get(HAS_MANAGED_CONFIG, false)) {
 			try {
 				KeyStore ks = KeyStore.getInstance("PKCS12");
 				ks.load(new ByteArrayInputStream(Base64.decode(mCurrentCertificateData, 0)), mCurrentUserCertificatePassword);

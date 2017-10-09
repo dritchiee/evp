@@ -49,7 +49,7 @@ import org.strongswan.android.logic.imc.RemediationInstruction;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.strongswan.android.logic.ManagedConfigurationContract.Controller.ALLOW_ADD_OTHER_PROFILES;
+import static org.strongswan.android.logic.ManagedConfigurationContract.Controller.HAS_MANAGED_CONFIG;
 
 public class VpnStateFragment extends Fragment implements VpnStateListener
 {
@@ -128,7 +128,7 @@ public class VpnStateFragment extends Fragment implements VpnStateListener
 			@Override
 			public void onClick(View v)
 			{
-				if (mService != null && !Prefs.get(ALLOW_ADD_OTHER_PROFILES, true))
+				if (mService != null && Prefs.get(HAS_MANAGED_CONFIG, true))
 				{
 					mService.disconnect();
 				}
