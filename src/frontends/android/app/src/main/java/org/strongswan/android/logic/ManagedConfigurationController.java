@@ -90,6 +90,7 @@ class ManagedConfigurationController implements ManagedConfigurationContract.Con
         Prefs.put(HAS_MANAGED_CONFIG, true);
         Prefs.put(CLOSE_APP_AFTER_CONNECT, bundle.getBoolean(CLOSE_APP_AFTER_CONNECT));
         Prefs.put(ALLOW_DISCONNECT, bundle.getBoolean(ALLOW_DISCONNECT));
+        Prefs.put(ALLOW_CLEAR_APP_DATA, bundle.getBoolean(ALLOW_CLEAR_APP_DATA));
 
         VpnProfileDataSource dataSource = new VpnProfileDataSource(StrongSwanApplication.getContext());
         dataSource.open();

@@ -197,4 +197,6 @@
     <string name="close_app_after_vpn_connect_description">Wartość określa czy po nawiązaniu połączenia VPN aplikacja ma być automatycznie minimalizowana</string>
     <string name="allow_disconnect_title">Pozwalaj na rozłączanie połączenia VPN</string>
     <string name="allow_disconnect_description">Pozwalaj na rozłączanie połączenia VPN</string>
+    <string name="allow_clear_app_data_title">Pozwalaj na czyszcznie danych aplikacji</string>
+    <string name="allow_clear_app_data_description">Pozwalaj na czyszcznie danych aplikacji. Wyczyszczenie tych danych spowoduje usunięcie wszystkich zapisanych profili VPN, oraz rozłączenie połączenia jeśli zostało nawiązane.</string>
 </resources>

@@ -23,6 +23,13 @@
         android:title="@string/allow_disconnect_title"/>
 
     <restriction
+        android:key="allow_clear_app_data"
+        android:defaultValue="true"
+        android:restrictionType="bool"
+        android:title="@string/allow_clear_app_data_title"
+        android:description="@string/allow_clear_app_data_description"/>
+
+    <restriction
         android:key="host"
         android:defaultValue=""
         android:description="@string/profile_gateway_hint"

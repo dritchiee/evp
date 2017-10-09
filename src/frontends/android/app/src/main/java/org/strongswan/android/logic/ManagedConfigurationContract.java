@@ -5,6 +5,7 @@ public interface ManagedConfigurationContract {
     interface Controller {
         String ALLOW_MODIFY_VPN_PROFILE   = "allow_modify_vpn_profile";
         String ALLOW_DISCONNECT           = "allow_disconnect";
+        String ALLOW_CLEAR_APP_DATA       = "allow_clear_app_data";
         String HOST                       = "host";
         String VPN_TYPE                   = "vpn_type";
         String USER_CERT_DATA             = "user_cert_data";
