@@ -282,7 +282,7 @@ public class MainActivity extends AppCompatActivity implements OnVpnProfileSelec
 	@Override
 	public void onVpnProfileSelected(VpnProfile profile)
 	{
-		if (!mService.getState().equals(State.CONNECTED) && Prefs.get(ALLOW_ADD_OTHER_PROFILES, true)) {
+		if (!mService.getState().equals(State.CONNECTED) && !Prefs.get(ALLOW_ADD_OTHER_PROFILES, true)) {
 			startVpnProfile(profile, true);
 		}
 	}

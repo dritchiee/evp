@@ -128,7 +128,7 @@ public class VpnStateFragment extends Fragment implements VpnStateListener
 			@Override
 			public void onClick(View v)
 			{
-				if (mService != null && Prefs.get(ALLOW_ADD_OTHER_PROFILES, true))
+				if (mService != null && !Prefs.get(ALLOW_ADD_OTHER_PROFILES, true))
 				{
 					mService.disconnect();
 				}
