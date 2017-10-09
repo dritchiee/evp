@@ -16,18 +16,20 @@
     for more details.
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.strongswan.android">
+          package="org.strongswan.android">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+
 
     <application
         android:name=".logic.StrongSwanApplication"
+        android:allowBackup="false"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/ApplicationTheme"
-        android:allowBackup="false" >
+        android:theme="@style/ApplicationTheme">
 
         <meta-data
             android:name="android.content.APP_RESTRICTIONS"
@@ -36,105 +38,119 @@
         <activity
             android:name=".ui.MainActivity"
             android:label="@string/main_activity_name"
-            android:launchMode="singleTop" >
+            android:launchMode="singleTop">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
             <intent-filter>
-                <action android:name="org.strongswan.android.action.START_PROFILE" />
-                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="org.strongswan.android.action.START_PROFILE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.VpnProfileDetailActivity" >
+            android:name=".ui.VpnProfileDetailActivity">
         </activity>
         <activity
             android:name=".ui.TrustedCertificatesActivity"
-            android:label="@string/trusted_certs_title" >
+            android:label="@string/trusted_certs_title">
         </activity>
         <activity
             android:name=".ui.SelectedApplicationsActivity"
-            android:label="@string/profile_select_apps" >
+            android:label="@string/profile_select_apps">
         </activity>
         <activity
             android:name=".ui.LogActivity"
-            android:label="@string/log_title" >
+            android:label="@string/log_title">
         </activity>
         <activity
             android:name=".ui.RemediationInstructionsActivity"
-            android:label="@string/remediation_instructions_title" >
+            android:label="@string/remediation_instructions_title">
         </activity>
         <activity
             android:name=".ui.VpnProfileSelectActivity"
-            android:label="@string/strongswan_shortcut" >
+            android:label="@string/strongswan_shortcut">
             <intent-filter>
-                <action android:name="android.intent.action.CREATE_SHORTCUT" />
-                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="android.intent.action.CREATE_SHORTCUT"/>
+                <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
         <activity
             android:name=".ui.VpnProfileImportActivity"
+            android:excludeFromRecents="true"
             android:label="@string/profile_import"
-            android:taskAffinity=""
-            android:excludeFromRecents="true" >
+            android:taskAffinity="">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="http" />
-                <data android:scheme="https" />
-                <data android:scheme="file" />
-                <data android:scheme="content" />
-                <data android:mimeType="application/vnd.strongswan.profile" />
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+
+                <data android:scheme="http"/>
+                <data android:scheme="https"/>
+                <data android:scheme="file"/>
+                <data android:scheme="content"/>
+                <data android:mimeType="application/vnd.strongswan.profile"/>
             </intent-filter>
             <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="http" />
-                <data android:scheme="https" />
-                <data android:scheme="file" />
-                <data android:scheme="content" />
-                <data android:host="*" />
-                <data android:pathPattern=".*\\..*\\..*\\..*\\.sswan" />
-                <data android:pathPattern=".*\\..*\\..*\\.sswan" />
-                <data android:pathPattern=".*\\..*\\.sswan" />
-                <data android:pathPattern=".*\\.sswan" />
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+
+                <data android:scheme="http"/>
+                <data android:scheme="https"/>
+                <data android:scheme="file"/>
+                <data android:scheme="content"/>
+                <data android:host="*"/>
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.sswan"/>
+                <data android:pathPattern=".*\\..*\\..*\\.sswan"/>
+                <data android:pathPattern=".*\\..*\\.sswan"/>
+                <data android:pathPattern=".*\\.sswan"/>
             </intent-filter>
         </activity>
         <activity
             android:name=".ui.TrustedCertificateImportActivity"
             android:label="@string/import_certificate"
-            android:theme="@style/AlertDialogTheme" >
+            android:theme="@style/AlertDialogTheme">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="application/x-x509-ca-cert" />
-                <data android:mimeType="application/x-x509-server-cert" />
-                <data android:mimeType="application/x-pem-file" />
-                <data android:mimeType="application/pkix-cert" />
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+
+                <data android:mimeType="application/x-x509-ca-cert"/>
+                <data android:mimeType="application/x-x509-server-cert"/>
+                <data android:mimeType="application/x-pem-file"/>
+                <data android:mimeType="application/pkix-cert"/>
             </intent-filter>
         </activity>
 
         <service
             android:name=".logic.VpnStateService"
-            android:exported="false" >
+            android:exported="false">
         </service>
         <service
             android:name=".logic.CharonVpnService"
             android:exported="false"
-            android:permission="android.permission.BIND_VPN_SERVICE" >
+            android:permission="android.permission.BIND_VPN_SERVICE">
             <intent-filter>
-                <action android:name="android.net.VpnService" />
+                <action android:name="android.net.VpnService"/>
             </intent-filter>
         </service>
         <service android:name=".logic.ManagedConfigurationService"/>
 
+        <receiver
+            android:name=".logic.BootReceiver"
+            android:enabled="true">
+            <intent-filter android:priority="999">
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </receiver>
+
         <provider
             android:name=".data.LogContentProvider"
             android:authorities="org.strongswan.android.content.log"
-            android:exported="true" >
+            android:exported="true">
             <!-- android:grantUriPermissions="true" combined with a custom permission does
                  not work (probably too many indirections with ACTION_SEND) so we secure
                  this provider with a custom ticketing system -->

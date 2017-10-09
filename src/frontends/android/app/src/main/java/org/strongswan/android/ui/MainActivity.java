@@ -21,8 +21,10 @@ import android.app.Dialog;
 import android.app.Service;
 import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.RestrictionsManager;
 import android.content.ServiceConnection;
 import android.net.VpnService;
 import android.os.AsyncTask;
@@ -61,6 +63,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.strongswan.android.logic.ManagedConfigurationContract.Controller.ALLOW_ADD_OTHER_PROFILES;
+import static org.strongswan.android.logic.ManagedConfigurationContract.Controller.HOST;
 
 public class MainActivity extends AppCompatActivity implements OnVpnProfileSelectedListener
 {
@@ -272,6 +275,10 @@ public class MainActivity extends AppCompatActivity implements OnVpnProfileSelec
 					Intent intent = new Intent(this, CharonVpnService.class);
 					intent.putExtras(mProfileInfo);
 					this.startService(intent);
+					String host = ((RestrictionsManager) getSystemService(Context.RESTRICTIONS_SERVICE)).getApplicationRestrictions().getString(HOST);
+					if (host != null && !host.isEmpty()) {
+						finish();
+					}
 				}
 				break;
 			default:

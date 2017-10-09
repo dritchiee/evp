@@ -37,7 +37,7 @@ public class IPRangeSet implements Iterable<IPRange>
 	public static IPRangeSet fromString(String ranges)
 	{
 		IPRangeSet set = new IPRangeSet();
-		if (ranges != null)
+		if (ranges != null && !ranges.isEmpty())
 		{
 			for (String range : ranges.split("\\s+"))
 			{

@@ -26,12 +26,32 @@ import static org.strongswan.android.ui.MainActivity.START_PROFILE;
 
 class ManagedConfigurationController implements ManagedConfigurationContract.Controller {
 
+    private final RestrictionsManager restrictionsManager;
+
+    ManagedConfigurationController() {
+        restrictionsManager = (RestrictionsManager) StrongSwanApplication.getContext().getSystemService(Context.RESTRICTIONS_SERVICE);
+    }
+
+    @Override
+    public void onServiceStarted() {
+        Bundle bundle = restrictionsManager.getApplicationRestrictions();
+
+        //default value is empty string or null when application is running not in managed work space
+        //when any value is set that mean there is managed configuration
+        String host = bundle.getString(HOST);
+        if (host != null && !host.isEmpty()) {
+            //save new configuration because it could change before application started
+            saveAndStartNewVpnProfile(bundle);
+        }
+    }
+
     @Override
     public void onConfigurationChange() {
+        Bundle bundle = restrictionsManager.getApplicationRestrictions();
+        saveAndStartNewVpnProfile(bundle);
+    }
 
-        RestrictionsManager restrictionsManager = (RestrictionsManager) StrongSwanApplication.getContext().getSystemService(Context.RESTRICTIONS_SERVICE);
-        Bundle              bundle              = restrictionsManager.getApplicationRestrictions();
-
+    private void saveAndStartNewVpnProfile(Bundle bundle) {
         VpnProfile vpnProfile = new VpnProfile();
         vpnProfile.setGateway(bundle.getString(HOST));
 
@@ -39,7 +59,7 @@ class ManagedConfigurationController implements ManagedConfigurationContract.Con
 
         String userCertData = bundle.getString(USER_CERT_DATA);
         String userCertPass = bundle.getString(USER_CERT_PASS);
-        vpnProfile.setUserCertificateAlias(storeUserCertificate(userCertData,userCertPass));
+        vpnProfile.setUserCertificateAlias(getUserCertAliasFromCertData(userCertData, userCertPass));
         vpnProfile.setUserCertificatePassword(userCertPass);
         vpnProfile.setUserCertificateData(userCertData);
 
@@ -78,7 +98,7 @@ class ManagedConfigurationController implements ManagedConfigurationContract.Con
 
 
         StrongSwanApplication.getContext().startActivity(new Intent(StrongSwanApplication.getContext(), MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        .setAction(START_PROFILE).putExtra(EXTRA_VPN_PROFILE_ID, vpnProfile.getId()));
+                .setAction(START_PROFILE).putExtra(EXTRA_VPN_PROFILE_ID, vpnProfile.getId()));
     }
 
     private VpnType getVpnTypeFromString(String vpnTypeAsString) {
@@ -110,29 +130,25 @@ class ManagedConfigurationController implements ManagedConfigurationContract.Con
             store.setCertificateEntry(null, extractCertificate(certData));
             alias = store.aliases().nextElement();
             TrustedCertificateManager.getInstance().reset();
-        } catch (CertificateException | NoSuchAlgorithmException | IOException | KeyStoreException e) {
-            e.printStackTrace();
+        } catch (CertificateException | NoSuchAlgorithmException | IOException | KeyStoreException ignored) {
         }
         return alias;
     }
 
     private X509Certificate extractCertificate(String certData) throws CertificateException {
-        byte[]             bits        = Base64.decode(certData, 0);
-        CertificateFactory factory     = CertificateFactory.getInstance("X.509");
+        byte[]             bits    = Base64.decode(certData, 0);
+        CertificateFactory factory = CertificateFactory.getInstance("X.509");
         return (X509Certificate) factory.generateCertificate(new ByteArrayInputStream(bits));
     }
 
-    private String storeUserCertificate(String certData, String certPass) {
+    private String getUserCertAliasFromCertData(String certData, String certPass) {
         String alias = "";
         try {
             KeyStore ks = KeyStore.getInstance("PKCS12");
             ks.load(new ByteArrayInputStream(Base64.decode(certData, 0)), certPass.toCharArray());
             alias = ks.aliases().nextElement();
-        } catch (CertificateException | NoSuchAlgorithmException | IOException | KeyStoreException e) {
-            e.printStackTrace();
+        } catch (CertificateException | NoSuchAlgorithmException | IOException | KeyStoreException ignored) {
         }
         return alias;
-//        X509Certificate     certificate = (X509Certificate) ks.getCertificate(alias);
-//        RSAPrivateKey       privateKey  = (RSAPrivateKey) ks.getKey(alias, certPass.toCharArray());
     }
 }

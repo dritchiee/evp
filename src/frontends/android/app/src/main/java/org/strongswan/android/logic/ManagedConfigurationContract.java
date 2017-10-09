@@ -24,6 +24,7 @@ public interface ManagedConfigurationContract {
         String ADVANCED_APPS_BEHAVIOR     = "advanced_applications_behavior";
         String ADVANCED_APPS_LIST         = "advanced_applications_list";
 
+        void onServiceStarted();
         void onConfigurationChange();
     }
 }

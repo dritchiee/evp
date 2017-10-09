@@ -147,7 +147,7 @@ public class VpnProfileListFragment extends Fragment
 			mReadOnly = args.getBoolean("read_only", mReadOnly);
 		}
 
-		mReadOnly = Prefs.get(ALLOW_ADD_OTHER_PROFILES, true);
+		mReadOnly = !Prefs.get(ALLOW_ADD_OTHER_PROFILES, true);
 
 		if (!mReadOnly)
 		{

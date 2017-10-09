@@ -21,6 +21,7 @@ public class ManagedConfigurationService extends Service {
         controller = new ManagedConfigurationController();
 
         registerReceiver(configurationBroadcastReceiver, configurationChangedFilter());
+        controller.onServiceStarted();
     }
 
     @Nullable
