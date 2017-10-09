@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<restrictions xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <restriction
+        android:key="allow_other_vpn_settings"
+        android:defaultValue="true"
+        android:restrictionType="bool"
+        android:description="@string/allow_other_vpn_settings_description"
+        android:title="@string/allow_other_vpn_settings_title"/>
+
+    <restriction
+        android:key="host"
+        android:defaultValue=""
+        android:description="@string/profile_gateway_hint"
+        android:restrictionType="string"
+        android:title="@string/profile_gateway_label"/>
+
+    <restriction
+        android:key="vpn_type"
+        android:defaultValue="0"
+        android:restrictionType="choice"
+        android:title="@string/profile_vpn_type_label"
+        android:entries="@array/vpn_types"
+        android:entryValues="@array/vpn_types_values"/>
+
+    <!--<restriction-->
+        <!--android:key="user_cert_alias"-->
+        <!--android:defaultValue=""-->
+        <!--android:restrictionType="string"-->
+        <!--android:title="@string/user_cert_alias"-->
+        <!--android:description="@string/user_cert_alias"/>-->
+
+    <restriction
+        android:key="user_cert_data"
+        android:defaultValue=""
+        android:restrictionType="string"
+        android:title="Base64 encoded user certificate data"/>
+
+    <restriction
+        android:key="user_cert_pass"
+        android:defaultValue=""
+        android:restrictionType="string"
+        android:title="Password to open P12"/>
+
+    <restriction
+        android:key="ca_cert_data"
+        android:defaultValue=""
+        android:restrictionType="string"
+        android:title="@string/ca_cert_data"
+        android:description="@string/ca_cert_data_description"/>
+
+    <restriction
+        android:key="profile_name"
+        android:defaultValue=""
+        android:restrictionType="string"
+        android:title="@string/profile_name_label_simple"
+        android:description="@string/profile_name_label"/>
+
+    <restriction
+        android:key="use_advanced_settings"
+        android:defaultValue="false"
+        android:restrictionType="bool"
+        android:title="@string/use_advanced_settings"/>
+
+    <restriction
+        android:key="advanced_server_identity"
+        android:defaultValue=""
+        android:restrictionType="string"
+        android:title="@string/advanced_server_identity"
+        android:description="@string/profile_remote_id_hint"/>
+
+    <restriction
+        android:key="advanced_mtu"
+        android:defaultValue="1400"
+        android:restrictionType="integer"
+        android:title="@string/profile_mtu_label"
+        android:description="@string/advanced_mtu_description"/>
+
+    <restriction
+        android:key="advanced_port"
+        android:defaultValue="500"
+        android:restrictionType="integer"
+        android:title="@string/profile_port_label"
+        android:description="@string/profile_port_hint"/>
+
+    <restriction
+        android:key="advanced_nat_keep_alive"
+        android:defaultValue="45"
+        android:restrictionType="integer"
+        android:title="@string/profile_nat_keepalive_label"
+        android:description="@string/profile_nat_keepalive_hint"/>
+
+    <restriction
+        android:key="advanced_send_certificate_request"
+        android:defaultValue="true"
+        android:restrictionType="bool"
+        android:title="@string/profile_cert_req_label"
+        android:description="@string/profile_cert_req_hint"/>
+
+    <restriction
+        android:key="advanced_subnets_whitelist"
+        android:defaultValue=""
+        android:restrictionType="string"
+        android:title="@string/advanced_subnets_whitelist_title"
+        android:description="@string/profile_included_subnets_hint"/>
+
+    <restriction
+        android:key="advanced_subnets_blacklist"
+        android:defaultValue=""
+        android:restrictionType="string"
+        android:title="@string/advanced_subnets_blackist_title"
+        android:description="@string/profile_excluded_subnets_hint"/>
+
+    <restriction
+        android:key="advanced_block_ipv4"
+        android:defaultValue="false"
+        android:restrictionType="bool"
+        android:title="@string/profile_split_tunnelingv4_title"/>
+
+    <restriction
+        android:key="advanced_block_ipv6"
+        android:defaultValue="false"
+        android:restrictionType="bool"
+        android:title="@string/profile_split_tunnelingv6_title"/>
+
+    <restriction
+        android:key="advanced_applications_behavior"
+        android:defaultValue="0"
+        android:restrictionType="choice"
+        android:title=""
+        android:entries="@array/apps_handling"
+        android:entryValues="@array/apps_handling_values"/>
+
+    <restriction
+        android:key="advanced_applications_list"
+        android:defaultValue=""
+        android:restrictionType="string"
+        android:title="@string/advanced_applications_list_title"
+        android:description="@string/advanced_applications_list_description"/>
+
+</restrictions>
