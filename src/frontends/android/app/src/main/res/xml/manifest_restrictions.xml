@@ -16,6 +16,13 @@
         android:description="@string/close_app_after_vpn_connect_description"/>
 
     <restriction
+        android:key="allow_disconnect"
+        android:defaultValue="false"
+        android:restrictionType="bool"
+        android:description="@string/allow_disconnect_description"
+        android:title="@string/allow_disconnect_title"/>
+
+    <restriction
         android:key="host"
         android:defaultValue=""
         android:description="@string/profile_gateway_hint"
