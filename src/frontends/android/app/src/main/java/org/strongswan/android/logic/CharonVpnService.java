@@ -67,6 +67,7 @@ import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
 import java.security.UnrecoverableKeyException;
+import java.security.cert.Certificate;
 import java.security.cert.CertificateEncodingException;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
@@ -75,6 +76,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.SortedSet;
 
+import static android.security.KeyChain.getCertificateChain;
 import static org.strongswan.android.logic.ManagedConfigurationContract.Controller.ALLOW_MODIFY_VPN_PROFILE;
 import static org.strongswan.android.logic.ManagedConfigurationContract.Controller.HAS_MANAGED_CONFIG;
 
@@ -631,17 +633,29 @@ public class CharonVpnService extends VpnService implements Runnable, VpnStateSe
 	 * @throws KeyChainException
 	 * @throws CertificateEncodingException
 	 */
-	private byte[][] getUserCertificate() throws KeyChainException, InterruptedException, CertificateEncodingException
-	{
+	private byte[][] getUserCertificate() throws KeyChainException, InterruptedException, CertificateException, KeyStoreException, NoSuchAlgorithmException, IOException {
 		ArrayList<byte[]> encodings = new ArrayList<byte[]>();
-		X509Certificate[] chain = KeyChain.getCertificateChain(getApplicationContext(), mCurrentUserCertificateAlias);
-		if (chain == null || chain.length == 0)
-		{
-			return null;
-		}
-		for (X509Certificate cert : chain)
-		{
-			encodings.add(cert.getEncoded());
+
+		if (Prefs.get(HAS_MANAGED_CONFIG, false) && mCurrentCertificateData != null) {
+			KeyStore ks = KeyStore.getInstance("PKCS12");
+			ks.load(new ByteArrayInputStream(Base64.decode(mCurrentCertificateData, 0)), mCurrentUserCertificatePassword);
+			Certificate[] chain = ks.getCertificateChain(mCurrentUserCertificateAlias);
+			if (chain == null || chain.length == 0) {
+				return null;
+			}
+			for (Certificate certificate : chain) {
+				encodings.add(certificate.getEncoded());
+			}
+		} else {
+			X509Certificate[] chain = KeyChain.getCertificateChain(getApplicationContext(), mCurrentUserCertificateAlias);
+
+			if (chain == null || chain.length == 0) {
+				return null;
+			}
+			for (X509Certificate cert : chain) {
+				encodings.add(cert.getEncoded());
+			}
+
 		}
 		return encodings.toArray(new byte[encodings.size()][]);
 	}
@@ -659,7 +673,7 @@ public class CharonVpnService extends VpnService implements Runnable, VpnStateSe
 	 */
 	private PrivateKey getUserKey() throws KeyChainException, InterruptedException
 	{
-		if (Prefs.get(HAS_MANAGED_CONFIG, false)) {
+		if (Prefs.get(HAS_MANAGED_CONFIG, false) && mCurrentCertificateData != null) {
 			try {
 				KeyStore ks = KeyStore.getInstance("PKCS12");
 				ks.load(new ByteArrayInputStream(Base64.decode(mCurrentCertificateData, 0)), mCurrentUserCertificatePassword);

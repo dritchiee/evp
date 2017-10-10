@@ -12,14 +12,12 @@
         android:key="close_app_after_vpn_connect"
         android:defaultValue="false"
         android:restrictionType="bool"
-        android:title="@string/close_app_after_vpn_connect_title"
-        android:description="@string/close_app_after_vpn_connect_description"/>
+        android:title="@string/close_app_after_vpn_connect_title"/>
 
     <restriction
         android:key="allow_disconnect"
         android:defaultValue="false"
         android:restrictionType="bool"
-        android:description="@string/allow_disconnect_description"
         android:title="@string/allow_disconnect_title"/>
 
     <restriction

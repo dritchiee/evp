@@ -175,4 +175,23 @@
     <string name="disconnect_active_connection">This will disconnect the active VPN connection!</string>
     <string name="connect">Соединить</string>
 
+    <!--Manifest Restrictions-->
+    <string name="user_cert_alias">User certificate alias</string>
+    <string name="ca_cert_data">Binary data of CA Certificate</string>
+    <string name="ca_cert_data_description">Binary data of CA Certificate, which will be imported to application. When empty: certificate will be automatically chose.</string>
+    <string name="use_advanced_settings">Use advanced settings</string>
+    <string name="advanced_server_identity">Server identity</string>
+    <string name="advanced_mtu_description">In case the default value is unsuitable for a particular network. Value has to be in range from 1280 – 1500</string>
+    <string name="advanced_subnets_whitelist_title">Subnets whitelist</string>
+    <string name="advanced_subnets_blackist_title">Subnets blacklist</string>
+    <string name="advanced_applications_behavior_description">When chose other option than "All applications use the VPN" package name list shouldn\'t be empty.</string>
+    <string name="advanced_applications_behavior_title">Other applications behavior when VPN is connected.</string>
+    <string name="advanced_applications_list_title">Applications list</string>
+    <string name="advanced_applications_list_description">List of applications for which specified behavior will be applied.</string>
+    <string name="allow_other_vpn_settings_description">Setting this to false will block adding other VPN Profiles. Any existing profiles will be deleted</string>
+    <string name="allow_other_vpn_settings_title">Allow add other VPN profiles</string>
+    <string name="close_app_after_vpn_connect_title">Hide application after establish VPN</string>
+    <string name="allow_disconnect_title">Allow user to disconnect VPN</string>
+    <string name="allow_clear_app_data_title">Allow user clear application data</string>
+    <string name="allow_clear_app_data_description">Allow user clear application data. Clearing this data will delete all saved VPN profiles and disconnect already connected VPN.</string>
 </resources>

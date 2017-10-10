@@ -22,10 +22,26 @@
         <item>IKEv2 EAP-TNC (Логін/Пароль)</item>
     </string-array>
 
+    <!--this array is number representation of array "vpn_types" used in managed configuration-->
+    <string-array name="vpn_types_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
     <!-- the order here must match the enum entries in VpnProfile.java -->
     <string-array name="apps_handling">
         <item>All applications use the VPN</item>
         <item>Exclude selected applications from the VPN</item>
         <item>Only selected applications use the VPN</item>
+    </string-array>
+
+    <!--this array is number representation of array "apps_handling" used in managed configuration-->
+    <string-array name="apps_handling_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
     </string-array>
 </resources>
