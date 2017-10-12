@@ -45,7 +45,8 @@ public class VpnProfileSelectActivity extends AppCompatActivity implements OnVpn
 		Intent intent = new Intent();
 		intent.putExtra(Intent.EXTRA_SHORTCUT_INTENT, shortcut);
 		intent.putExtra(Intent.EXTRA_SHORTCUT_NAME, profile.getName());
-		intent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, Intent.ShortcutIconResource.fromContext(this, R.drawable.ic_launcher));
+//		intent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, Intent.ShortcutIconResource.fromContext(this, R.drawable.ic_launcher));
+		intent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, Intent.ShortcutIconResource.fromContext(this, R.mipmap.test_launcher));
 		setResult(RESULT_OK, intent);
 		finish();
 	}

@@ -36,6 +36,11 @@ public class ManagedConfigurationService extends Service {
         unregisterReceiver(configurationBroadcastReceiver);
     }
 
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        return START_STICKY;
+    }
+
     private IntentFilter configurationChangedFilter() {
         return new IntentFilter(Intent.ACTION_APPLICATION_RESTRICTIONS_CHANGED);
     }

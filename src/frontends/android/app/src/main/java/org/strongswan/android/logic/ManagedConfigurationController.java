@@ -35,7 +35,6 @@ class ManagedConfigurationController implements ManagedConfigurationContract.Con
     @Override
     public void onServiceStarted() {
         Bundle bundle = restrictionsManager.getApplicationRestrictions();
-
         //default value is empty string or null when application is running not in managed work space
         //when any value is set that mean there is managed configuration
         String host = bundle.getString(HOST);

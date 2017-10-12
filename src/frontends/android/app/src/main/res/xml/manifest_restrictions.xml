@@ -53,13 +53,15 @@
         android:key="user_cert_data"
         android:defaultValue=""
         android:restrictionType="string"
-        android:title="Base64 encoded user certificate data"/>
+        android:title="@string/p12_user_cert_data_title"
+        android:description="@string/p12_user_cert_data_description"/>
 
     <restriction
         android:key="user_cert_pass"
         android:defaultValue=""
         android:restrictionType="string"
-        android:title="Password to open P12"/>
+        android:title="@string/p12_user_cert_password_title"
+        android:description="@string/p12_user_cert_password_description"/>
 
     <restriction
         android:key="ca_cert_data"
@@ -99,36 +101,36 @@
         android:key="advanced_port"
         android:defaultValue="500"
         android:restrictionType="integer"
-        android:title="@string/profile_port_label"
-        android:description="@string/profile_port_hint"/>
+        android:title="@string/advanced_server_port_title"
+        android:description="@string/advanced_server_port_description"/>
 
     <restriction
         android:key="advanced_nat_keep_alive"
         android:defaultValue="45"
         android:restrictionType="integer"
         android:title="@string/profile_nat_keepalive_label"
-        android:description="@string/profile_nat_keepalive_hint"/>
+        android:description="@string/advanced_nat_keep_alive_description"/>
 
     <restriction
         android:key="advanced_send_certificate_request"
         android:defaultValue="true"
         android:restrictionType="bool"
         android:title="@string/profile_cert_req_label"
-        android:description="@string/profile_cert_req_hint"/>
+        android:description="@string/advanced_send_cert_request_description"/>
 
     <restriction
         android:key="advanced_subnets_whitelist"
         android:defaultValue=""
         android:restrictionType="string"
         android:title="@string/advanced_subnets_whitelist_title"
-        android:description="@string/profile_included_subnets_hint"/>
+        android:description="@string/advanced_subnets_whitelist_description"/>
 
     <restriction
         android:key="advanced_subnets_blacklist"
         android:defaultValue=""
         android:restrictionType="string"
         android:title="@string/advanced_subnets_blackist_title"
-        android:description="@string/profile_excluded_subnets_hint"/>
+        android:description="@string/advanced_subnets_blackist_description"/>
 
     <restriction
         android:key="advanced_block_ipv4"
@@ -146,9 +148,10 @@
         android:key="advanced_applications_behavior"
         android:defaultValue="0"
         android:restrictionType="choice"
-        android:title=""
+        android:title="@string/advanced_applications_behavior_title"
         android:entries="@array/apps_handling"
-        android:entryValues="@array/apps_handling_values"/>
+        android:entryValues="@array/apps_handling_values"
+        android:description="@string/advanced_applications_behavior_description"/>
 
     <restriction
         android:key="advanced_applications_list"

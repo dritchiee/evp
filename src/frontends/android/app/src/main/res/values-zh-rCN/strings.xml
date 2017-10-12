@@ -15,8 +15,8 @@
 <resources>
 
     <!-- Application -->
-    <string name="app_name">strongSwan VPN 客户端</string>
-    <string name="main_activity_name">strongSwan</string>
+    <string name="app_name">Test Enterprise VPN Client</string>
+    <string name="main_activity_name">Test Enterprise VPN Client</string>
     <string name="show_log">浏览日志</string>
     <string name="search">搜索</string>
     <string name="vpn_not_supported_title">无法支持VPN</string>

@@ -18,8 +18,8 @@
 <resources>
 
     <!-- Application -->
-    <string name="app_name">strongSwan VPN Client</string>
-    <string name="main_activity_name">strongSwan</string>
+    <string name="app_name">Test Enterprise VPN Client</string>
+    <string name="main_activity_name">Test Enterprise VPN Client</string>
     <string name="show_log">View log</string>
     <string name="search">Search</string>
     <string name="vpn_not_supported_title">VPN not supported</string>
@@ -180,21 +180,35 @@
 
     <!--Manifest Restrictions-->
     <string name="user_cert_alias">User certificate alias</string>
-    <string name="ca_cert_data">Binary data of CA Certificate</string>
+    <string name="ca_cert_data">CA Certificate</string>
     <string name="ca_cert_data_description">Binary data of CA Certificate, which will be imported to application. When empty: certificate will be automatically chose.</string>
     <string name="use_advanced_settings">Use advanced settings</string>
     <string name="advanced_server_identity">Server identity</string>
-    <string name="advanced_mtu_description">In case the default value is unsuitable for a particular network. Value has to be in range from 1280 – 1500</string>
+    <string name="advanced_server_identity_description">Defaults to the configured server. Custom values are explicitly sent to the server and enforced during authentication. This setting is only considered if \"Use advanced settings\" is checked</string>
+    <string name="advanced_mtu_description">In case the default value is unsuitable for a particular network. Value has to be in range from 1280 – 1500. This setting is only considered if \"Use advanced settings\" is checked</string>
+    <string name="advanced_server_port_title">Server port</string>
+    <string name="advanced_server_port_description">UDP port to connect to. 500 is default. This setting is only considered if \"Use advanced settings\" is checked</string>
+    <string name="advanced_nat_keep_alive_description">Small packets are sent to keep mappings on NAT routers alive if there is no other traffic. In order to save energy the default interval is 45 seconds. Behind NAT routers that remove mappings early this might be too high, try 20 seconds or less in that case. This setting is only considered if \"Use advanced settings\" is checked</string>
+    <string name="advanced_send_cert_request_description">Certificate requests are sent for all available or selected CA certificates. To reduce the size of the IKE_AUTH message this can be disabled. However, this only works if the server sends its certificate even if it didn\'t receive any certificate requests. This setting is only considered if \"Use advanced settings\" is checked</string>
+
     <string name="advanced_subnets_whitelist_title">Subnets whitelist</string>
+    <string name="advanced_subnets_whitelist_description">Only route traffic to specific subnets via VPN, everything else is routed as if there was no VPN (separated by spaces, e.g. \"192.168.1.0/24 2001:db8::/64\"). This setting is only considered if \"Use advanced settings\" is checked</string>
     <string name="advanced_subnets_blackist_title">Subnets blacklist</string>
-    <string name="advanced_applications_behavior_description">When chose other option than "All applications use the VPN" package name list shouldn\'t be empty.</string>
+    <string name="advanced_subnets_blackist_description">Traffic to these subnets will not be routed via VPN, but as if there was no VPN (separated by spaces, e.g. \"192.168.1.0/24 2001:db8::/64\"). This setting is only considered if \"Use advanced settings\" is checked</string>
+
+    <string name="advanced_applications_behavior_description">When chose other option than "All applications use the VPN" package name list shouldn\'t be empty. This setting is only considered if \"Use advanced settings\" is checked</string>
     <string name="advanced_applications_behavior_title">Other applications behavior when VPN is connected.</string>
     <string name="advanced_applications_list_title">Applications list</string>
-    <string name="advanced_applications_list_description">List of applications for which specified behavior will be applied.</string>
+    <string name="advanced_applications_list_description">List of applications for which specified behavior will be applied. This setting is only considered if \"Use advanced settings\" is checked</string>
     <string name="allow_other_vpn_settings_description">Setting this to false will block adding other VPN Profiles. Any existing profiles will be deleted</string>
     <string name="allow_other_vpn_settings_title">Allow add other VPN profiles</string>
     <string name="close_app_after_vpn_connect_title">Hide application after establish VPN</string>
     <string name="allow_disconnect_title">Allow user to disconnect VPN</string>
     <string name="allow_clear_app_data_title">Allow user clear application data</string>
     <string name="allow_clear_app_data_description">Allow user clear application data. Clearing this data will delete all saved VPN profiles and disconnect already connected VPN.</string>
+    
+    <string name="p12_user_cert_data_title">PKCS12 User Certificate</string>
+    <string name="p12_user_cert_data_description">Base64 encoded user certificate data</string>
+    <string name="p12_user_cert_password_title">Password to open PKCS12</string>
+    <string name="p12_user_cert_password_description">Password to open PKCS12</string>
 </resources>
