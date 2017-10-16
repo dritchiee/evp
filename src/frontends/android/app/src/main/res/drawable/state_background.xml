@@ -25,7 +25,7 @@
     <item android:bottom="2dp">
         <shape>
             <solid
-                android:color="@color/panel_background" />
+                android:color="@color/white" />
         </shape>
     </item>
 

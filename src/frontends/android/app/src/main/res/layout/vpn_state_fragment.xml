@@ -22,8 +22,12 @@
     android:background="@drawable/state_background"
     android:orientation="vertical" >
 
-    <GridLayout
+    <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <GridLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="20dp"
@@ -38,7 +42,7 @@
             android:layout_marginRight="5dp"
             android:gravity="top"
             android:text="@string/state_label"
-            android:textColor="?android:textColorPrimary"
+            android:textColor="@color/gray"
             android:textSize="20sp" />
 
         <TextView
@@ -47,7 +51,7 @@
             android:layout_height="wrap_content"
             android:gravity="top"
             android:text="@string/state_disabled"
-            android:textColor="?android:textColorSecondary"
+            android:textColor="@color/red"
             android:textSize="20sp" />
 
         <TextView
@@ -57,9 +61,9 @@
             android:layout_marginRight="5dp"
             android:gravity="top"
             android:text="@string/profile_label"
-            android:textColor="?android:textColorPrimary"
+            android:textColor="@color/gray"
             android:textSize="20sp"
-            android:visibility="gone" >
+            android:visibility="visible" >
         </TextView>
 
         <TextView
@@ -72,6 +76,20 @@
         </TextView>
     </GridLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="20dp"
+            android:gravity="center|end">
+
+            <Button
+                android:id="@+id/action"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/disconnect"/>
+        </LinearLayout>
+    </LinearLayout>
+
     <ProgressBar
         android:id="@+id/progress"
         android:layout_width="match_parent"
@@ -83,15 +101,15 @@
         android:visibility="gone"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal" />
 
-    <Button
-        android:id="@+id/action"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:text="@string/disconnect"
-        style="?android:attr/borderlessButtonStyle" >
-    </Button>
+    <!--<Button-->
+        <!--android:id="@+id/action"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginBottom="10dp"-->
+        <!--android:layout_marginLeft="20dp"-->
+        <!--android:layout_marginRight="20dp"-->
+        <!--android:text="@string/disconnect"-->
+        <!--style="?android:attr/borderlessButtonStyle" >-->
+    <!--</Button>-->
 
 </LinearLayout>

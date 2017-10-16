@@ -26,7 +26,6 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.net.VpnService;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.v4.app.Fragment;
@@ -60,7 +59,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.strongswan.android.logic.ManagedConfigurationContract.Controller.ALLOW_MODIFY_VPN_PROFILE;
 import static org.strongswan.android.logic.ManagedConfigurationContract.Controller.CLOSE_APP_AFTER_CONNECT;
 
 public class MainActivity extends AppCompatActivity implements OnVpnProfileSelectedListener
@@ -174,19 +172,12 @@ public class MainActivity extends AppCompatActivity implements OnVpnProfileSelec
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu)
 	{
-		if (Prefs.get(ALLOW_MODIFY_VPN_PROFILE, true)) {
-			getMenuInflater().inflate(R.menu.main, menu);
-		}
 		return true;
 	}
 
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu)
 	{
-		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT)
-		{
-			menu.removeItem(R.id.menu_import_profile);
-		}
 		return true;
 	}
 

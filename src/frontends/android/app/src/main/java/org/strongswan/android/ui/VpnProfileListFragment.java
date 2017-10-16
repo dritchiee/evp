@@ -240,6 +240,7 @@ public class VpnProfileListFragment extends Fragment
 			mEditProfile = menu.findItem(R.id.edit_profile);
 			mSelected = new HashSet<>();
 			mode.setTitle(R.string.select_profiles);
+
 			return true;
 		}
 
@@ -292,6 +293,7 @@ public class VpnProfileListFragment extends Fragment
 			if (checked)
 			{
 				mSelected.add(position);
+				mListView.getChildAt(position).setBackgroundColor(getResources().getColor(R.color.gray));
 			}
 			else
 			{

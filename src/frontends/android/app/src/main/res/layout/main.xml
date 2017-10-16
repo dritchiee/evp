@@ -14,27 +14,28 @@
     for more details.
 -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:orientation="vertical">
 
     <fragment
-            class="org.strongswan.android.ui.VpnStateFragment"
-            android:id="@+id/vpn_state_frag"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+        android:id="@+id/vpn_state_frag"
+        class="org.strongswan.android.ui.VpnStateFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <fragment
-            class="org.strongswan.android.ui.ImcStateFragment"
-            android:id="@+id/imc_state_frag"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+        android:id="@+id/imc_state_frag"
+        class="org.strongswan.android.ui.ImcStateFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <fragment
-            class="org.strongswan.android.ui.VpnProfileListFragment"
-            android:id="@+id/profile_list_frag"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+        android:id="@+id/profile_list_frag"
+        class="org.strongswan.android.ui.VpnProfileListFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
 
 </LinearLayout>
