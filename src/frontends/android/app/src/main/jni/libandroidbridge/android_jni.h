@@ -26,8 +26,10 @@
 #include <jni.h>
 #include <library.h>
 
-#define JNI_PACKAGE org_strongswan_android_logic
-#define JNI_PACKAGE_STRING "org/strongswan/android/logic"
+/*#define JNI_PACKAGE org_strongswan_android_logic*/
+#define JNI_PACKAGE pl_enterprise_vpn_client_logic
+#define JNI_PACKAGE_STRING "pl/enterprise/vpn/client/logic"
+/*#define JNI_PACKAGE_STRING "org/strongswan/android/logic"*/
 
 #define JNI_METHOD_PP(pack, klass, name, ret, ...) \
 	ret Java_##pack##_##klass##_##name(JNIEnv *env, jobject this, ##__VA_ARGS__)

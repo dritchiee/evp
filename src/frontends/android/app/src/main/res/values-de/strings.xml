@@ -18,8 +18,8 @@
 <resources>
 
     <!-- Application -->
-    <string name="app_name">Test Enterprise VPN Client</string>
-    <string name="main_activity_name">Test Enterprise VPN Client</string>
+    <string name="app_name">Enterprise VPN Client</string>
+    <string name="main_activity_name">Enterprise VPN Client</string>
     <string name="show_log">Log anzeigen</string>
     <string name="search">Suchen</string>
     <string name="vpn_not_supported_title">VPN nicht unterstützt</string>
@@ -54,16 +54,19 @@
     <string name="profile_name_label_simple">Profilname</string>
     <string name="profile_name_hint">Standardwert ist der konfigurierte Server</string>
     <string name="profile_name_hint_gateway">Standardwert ist \"%1$s\"</string>
-    <string name="profile_gateway_label">Server</string>
+    <string name="profile_server">Server</string>
+    <string name="profile_gateway_label"><![CDATA[<b>Server:</b>]]> %1$s</string>
     <string name="profile_gateway_hint">IP-Adresse oder Hostname des VPN Servers</string>
     <string name="profile_vpn_type_label">VPN-Typ</string>
     <string name="profile_username_label">Benutzername</string>
+    <string name="profile_username"><![CDATA[<b>Benutzername</b>]]> %1$s</string>
     <string name="profile_password_label">Passwort (optional)</string>
     <string name="profile_password_hint">Leer lassen, um bei Bedarf danach gefragt zu werden</string>
     <string name="profile_user_certificate_label">Benutzer-Zertifikat</string>
     <string name="profile_user_select_certificate_label">Benutzer-Zertifikat auswählen</string>
     <string name="profile_user_select_certificate">Wählen Sie ein bestimmtes Benutzer-Zertifikat</string>
     <string name="profile_user_select_id_label">Benutzer-Identität</string>
+    <string name="profile_user_select_id"><![CDATA[<b>Benutzer-Identität:</b>]]> %1$s</string>
     <string name="profile_user_select_id_init">Wählen Sie zuerst ein Benutzer-Zertifikat</string>
     <string name="profile_user_select_id_default">Standardwert (%1$s)</string>
     <string name="profile_ca_label">CA-Zertifikat</string>

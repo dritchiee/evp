@@ -16,7 +16,7 @@
     for more details.
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="org.strongswan.android">
+          package="pl.enterprise.vpn.client">
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
@@ -25,11 +25,11 @@
 
 
     <application
-        android:name=".logic.StrongSwanApplication"
+        android:name="pl.enterprise.vpn.client.logic.StrongSwanApplication"
         android:allowBackup="false"
         android:icon="@mipmap/test_launcher"
         android:label="@string/app_name"
-        android:manageSpaceActivity=".ui.ManageSpaceActivity"
+        android:manageSpaceActivity="pl.enterprise.vpn.client.ui.ManageSpaceActivity"
         android:theme="@style/AppTheme">
 
         <meta-data
@@ -37,7 +37,7 @@
             android:resource="@xml/manifest_restrictions"/>
 
         <activity
-            android:name=".ui.MainActivity"
+            android:name="pl.enterprise.vpn.client.ui.MainActivity"
             android:label="@string/main_activity_name"
             android:launchMode="singleTop">
             <intent-filter>
@@ -50,26 +50,26 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.VpnProfileDetailActivity">
+            android:name="pl.enterprise.vpn.client.ui.VpnProfileDetailActivity">
         </activity>
         <activity
-            android:name=".ui.TrustedCertificatesActivity"
+            android:name="pl.enterprise.vpn.client.ui.TrustedCertificatesActivity"
             android:label="@string/trusted_certs_title">
         </activity>
         <activity
-            android:name=".ui.SelectedApplicationsActivity"
+            android:name="pl.enterprise.vpn.client.ui.SelectedApplicationsActivity"
             android:label="@string/profile_select_apps">
         </activity>
         <activity
-            android:name=".ui.LogActivity"
+            android:name="pl.enterprise.vpn.client.ui.LogActivity"
             android:label="@string/log_title">
         </activity>
         <activity
-            android:name=".ui.RemediationInstructionsActivity"
+            android:name="pl.enterprise.vpn.client.ui.RemediationInstructionsActivity"
             android:label="@string/remediation_instructions_title">
         </activity>
         <activity
-            android:name=".ui.VpnProfileSelectActivity"
+            android:name="pl.enterprise.vpn.client.ui.VpnProfileSelectActivity"
             android:label="@string/strongswan_shortcut">
             <intent-filter>
                 <action android:name="android.intent.action.CREATE_SHORTCUT"/>
@@ -77,7 +77,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.VpnProfileImportActivity"
+            android:name="pl.enterprise.vpn.client.ui.VpnProfileImportActivity"
             android:excludeFromRecents="true"
             android:label="@string/profile_import"
             android:taskAffinity="">
@@ -111,7 +111,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.TrustedCertificateImportActivity"
+            android:name="pl.enterprise.vpn.client.ui.TrustedCertificateImportActivity"
             android:label="@string/import_certificate"
             android:theme="@style/AlertDialogTheme">
             <intent-filter>
@@ -125,25 +125,25 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.ManageSpaceActivity"
+            android:name="pl.enterprise.vpn.client.ui.ManageSpaceActivity"
             android:screenOrientation="portrait"/>
 
         <service
-            android:name=".logic.VpnStateService"
+            android:name="pl.enterprise.vpn.client.logic.VpnStateService"
             android:exported="false">
         </service>
         <service
-            android:name=".logic.CharonVpnService"
+            android:name="pl.enterprise.vpn.client.logic.CharonVpnService"
             android:exported="false"
             android:permission="android.permission.BIND_VPN_SERVICE">
             <intent-filter>
                 <action android:name="android.net.VpnService"/>
             </intent-filter>
         </service>
-        <service android:name=".logic.ManagedConfigurationService"/>
+        <service android:name="pl.enterprise.vpn.client.logic.ManagedConfigurationService"/>
 
         <receiver
-            android:name=".logic.BootReceiver"
+            android:name="pl.enterprise.vpn.client.logic.BootReceiver"
             android:enabled="true">
             <intent-filter android:priority="999">
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
@@ -152,12 +152,12 @@
         </receiver>
 
         <provider
-            android:name=".data.LogContentProvider"
+            android:name="pl.enterprise.vpn.client.data.LogContentProvider"
             android:authorities="org.strongswan.android.content.log"
             android:exported="true">
-            <!-- android:grantUriPermissions="true" combined with a custom permission does
-                 not work (probably too many indirections with ACTION_SEND) so we secure
-                 this provider with a custom ticketing system -->
+            <!--<androidroid:grantUriPermissions="true" combined with a custom permission does-->
+                 <!--not work (probably too many indirections with ACTION_SEND) so we secure-->
+                 <!--this provider with a custom ticketing system &ndash;&gt;-->
         </provider>
     </application>
 

@@ -18,8 +18,8 @@
 <resources>
 
     <!-- Application -->
-    <string name="app_name">Test Enterprise VPN Client</string>
-    <string name="main_activity_name">Test Enterprise VPN Client</string>
+    <string name="app_name">Enterprise VPN Client</string>
+    <string name="main_activity_name">Enterprise VPN Client</string>
     <string name="show_log">Pokaż log</string>
     <string name="search">Szukaj</string>
     <string name="vpn_not_supported_title">Nie obsługiwany VPN</string>
@@ -44,7 +44,7 @@
     <string name="profiles_deleted">Wybrane profile usunięte</string>
     <string name="no_profile_selected">Nie wybrano profilu</string>
     <string name="one_profile_selected">Wybrano jeden profil</string>
-    <string name="x_profiles_selected">Wzbrano %1$d profile</string>
+    <string name="x_profiles_selected">Wybrano %1$d profile</string>
 
     <!-- VPN profile details -->
     <string name="profile_edit_save">Zapisz</string>
@@ -54,16 +54,20 @@
     <string name="profile_name_label_simple">Nazwa profilu</string>
     <string name="profile_name_hint">Defaults to the configured server</string>
     <string name="profile_name_hint_gateway">Defaults to \"%1$s\"</string>
-    <string name="profile_gateway_label">Serwer</string>
+    <string name="profile_server">Serwer</string>
+    <string name="profile_gateway_label"><![CDATA[<b>Serwer:</b>]]> %1$s</string>
     <string name="profile_gateway_hint">IP address or hostname of the VPN server</string>
     <string name="profile_vpn_type_label">Typ VPN</string>
     <string name="profile_username_label">Użytkownik</string>
+    <string name="profile_username"><![CDATA[<b>Użytkownik</b>]]> %1$s</string>
     <string name="profile_password_label">Hasło (opcjonalny)</string>
     <string name="profile_password_hint">Leave blank to get prompted on demand</string>
     <string name="profile_user_certificate_label">Certyfikat użytkownika</string>
+    <string name="profile_user_certificate"><![CDATA[<b>Certyfikat użytkownika</b>]]> %1$s</string>
     <string name="profile_user_select_certificate_label">Wybierz certyfikat użytkownika</string>
     <string name="profile_user_select_certificate">>Wybierz określony certyfikat użytkownika</string>
     <string name="profile_user_select_id_label">User identity</string>
+    <string name="profile_user_select_id"><![CDATA[<b>User identity:</b>]]> %1$s</string>
     <string name="profile_user_select_id_init">Select a certificate first</string>
     <string name="profile_user_select_id_default">Default (%1$s)</string>
     <string name="profile_ca_label">Certyfikat CA</string>

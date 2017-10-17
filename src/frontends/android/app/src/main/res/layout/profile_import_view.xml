@@ -70,7 +70,7 @@
                 android:layout_marginLeft="4dp"
                 android:layout_marginStart="4dp"
                 android:textSize="12sp"
-                android:text="@string/profile_gateway_label" />
+                android:text="@string/profile_server" />
 
             <TextView
                 android:id="@+id/gateway"
@@ -109,7 +109,7 @@
             android:orientation="vertical"
             android:layout_marginTop="6dp">
 
-            <org.strongswan.android.ui.widget.TextInputLayoutHelper
+            <pl.enterprise.vpn.client.ui.widget.TextInputLayoutHelper
                 android:id="@+id/username_wrap"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" >
@@ -122,9 +122,9 @@
                     android:inputType="textNoSuggestions"
                     android:hint="@string/profile_username_label" />
 
-            </org.strongswan.android.ui.widget.TextInputLayoutHelper>
+            </pl.enterprise.vpn.client.ui.widget.TextInputLayoutHelper>
 
-            <org.strongswan.android.ui.widget.TextInputLayoutHelper
+            <pl.enterprise.vpn.client.ui.widget.TextInputLayoutHelper
                 android:id="@+id/password_wrap"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -139,7 +139,7 @@
                     android:inputType="textPassword|textNoSuggestions"
                     android:hint="@string/profile_password_label" />
 
-            </org.strongswan.android.ui.widget.TextInputLayoutHelper>
+            </pl.enterprise.vpn.client.ui.widget.TextInputLayoutHelper>
 
         </LinearLayout>
 

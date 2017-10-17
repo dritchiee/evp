@@ -18,8 +18,8 @@
 <resources>
 
     <!-- Application -->
-    <string name="app_name">Test Enterprise VPN Client</string>
-    <string name="main_activity_name">Test Enterprise VPN Client</string>
+    <string name="app_name">Enterprise VPN Client</string>
+    <string name="main_activity_name">Enterprise VPN Client</string>
     <string name="show_log">View log</string>
     <string name="search">Search</string>
     <string name="vpn_not_supported_title">VPN not supported</string>
@@ -54,16 +54,20 @@
     <string name="profile_name_label_simple">Profile name</string>
     <string name="profile_name_hint">Defaults to the configured server</string>
     <string name="profile_name_hint_gateway">Defaults to \"%1$s\"</string>
-    <string name="profile_gateway_label">Server</string>
+    <string name="profile_server">Server</string>
+    <string name="profile_gateway_label"><![CDATA[<b>Server:</b>]]> %1$s</string>
     <string name="profile_gateway_hint">IP address or hostname of the VPN server</string>
     <string name="profile_vpn_type_label">VPN Type</string>
     <string name="profile_username_label">Username</string>
+    <string name="profile_username"><![CDATA[<b>Username</b>]]> %1$s</string>
     <string name="profile_password_label">Password (optional)</string>
     <string name="profile_password_hint">Leave blank to get prompted on demand</string>
     <string name="profile_user_certificate_label">User certificate</string>
+    <string name="profile_user_certificate"><![CDATA[<b>User certificate:</b>]]> %1$s</string>
     <string name="profile_user_select_certificate_label">Select user certificate</string>
     <string name="profile_user_select_certificate">Select a specific user certificate</string>
     <string name="profile_user_select_id_label">User identity</string>
+    <string name="profile_user_select_id"><![CDATA[<b>User identity:</b>]]> %1$s</string>
     <string name="profile_user_select_id_init">Select a certificate first</string>
     <string name="profile_user_select_id_default">Default (%1$s)</string>
     <string name="profile_ca_label">CA certificate</string>
@@ -206,7 +210,7 @@
     <string name="allow_disconnect_title">Allow user to disconnect VPN</string>
     <string name="allow_clear_app_data_title">Allow user clear application data</string>
     <string name="allow_clear_app_data_description">Allow user clear application data. Clearing this data will delete all saved VPN profiles and disconnect already connected VPN.</string>
-    
+
     <string name="p12_user_cert_data_title">PKCS12 User Certificate</string>
     <string name="p12_user_cert_data_description">Base64 encoded user certificate data</string>
     <string name="p12_user_cert_password_title">Password to open PKCS12</string>

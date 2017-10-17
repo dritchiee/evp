@@ -43,11 +43,11 @@
         android:entryValues="@array/vpn_types_values"/>
 
     <!--<restriction-->
-        <!--android:key="user_cert_alias"-->
-        <!--android:defaultValue=""-->
-        <!--android:restrictionType="string"-->
-        <!--android:title="@string/user_cert_alias"-->
-        <!--android:description="@string/user_cert_alias"/>-->
+        androidroid:key="user_cert_alias"-->
+        androidroid:defaultValue=""-->
+        androidroid:restrictionType="string"-->
+        androidroid:title="@string/user_cert_alias"-->
+        androidroid:description="@string/user_cert_alias"/>-->
 
     <restriction
         android:key="user_cert_data"

@@ -21,19 +21,19 @@
 
     <fragment
         android:id="@+id/vpn_state_frag"
-        class="org.strongswan.android.ui.VpnStateFragment"
+        class="pl.enterprise.vpn.client.ui.VpnStateFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <fragment
         android:id="@+id/imc_state_frag"
-        class="org.strongswan.android.ui.ImcStateFragment"
+        class="pl.enterprise.vpn.client.ui.ImcStateFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <fragment
         android:id="@+id/profile_list_frag"
-        class="org.strongswan.android.ui.VpnProfileListFragment"
+        class="pl.enterprise.vpn.client.ui.VpnProfileListFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"/>

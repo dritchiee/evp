@@ -15,8 +15,8 @@
 <resources>
 
     <!-- Application -->
-    <string name="app_name">Test Enterprise VPN Client</string>
-    <string name="main_activity_name">Test Enterprise VPN Client</string>
+    <string name="app_name">Enterprise VPN Client</string>
+    <string name="main_activity_name">Enterprise VPN Client</string>
     <string name="show_log">Журнал</string>
     <string name="search">Поиск</string>
     <string name="vpn_not_supported_title">VPN не поддерживается</string>
@@ -51,16 +51,19 @@
     <string name="profile_name_label_simple">Название профиля</string>
     <string name="profile_name_hint">Defaults to the configured server</string>
     <string name="profile_name_hint_gateway">Defaults to \"%1$s\"</string>
-    <string name="profile_gateway_label">Сервер</string>
+    <string name="profile_server">Сервер</string>
+    <string name="profile_gateway_label"><![CDATA[<b>Сервер:</b>]]> %1$s</string>
     <string name="profile_gateway_hint">IP address or hostname of the VPN server</string>
     <string name="profile_vpn_type_label">VPN Тип</string>
     <string name="profile_username_label">Логин</string>
+    <string name="profile_username"><![CDATA[<b>Логин</b>]]> %1$s</string>
     <string name="profile_password_label">Пароль (необязательный)</string>
     <string name="profile_password_hint">Leave blank to get prompted on demand</string>
     <string name="profile_user_certificate_label">Сертификат пользователя</string>
     <string name="profile_user_select_certificate_label">Выбрать сертификат пользователя</string>
     <string name="profile_user_select_certificate">Выбрать сертификат пользователя</string>
     <string name="profile_user_select_id_label">User identity</string>
+    <string name="profile_user_select_id"><![CDATA[<b>User identity:</b>]]> %1$s</string>
     <string name="profile_user_select_id_init">Select a certificate first</string>
     <string name="profile_user_select_id_default">Default (%1$s)</string>
     <string name="profile_ca_label">Сертификат CA</string>
