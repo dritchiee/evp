@@ -19,6 +19,7 @@
               android:background="@color/white"
               android:orientation="vertical">
 
+    <include layout="@layout/toolbar"/>
     <fragment
         android:id="@+id/vpn_state_frag"
         class="pl.enterprise.vpn.client.ui.VpnStateFragment"

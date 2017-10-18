@@ -39,17 +39,17 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+
 import pl.enterprise.vpn.client.R;
 import pl.enterprise.vpn.client.data.Prefs;
 import pl.enterprise.vpn.client.data.VpnProfile;
 import pl.enterprise.vpn.client.data.VpnProfileDataSource;
 import pl.enterprise.vpn.client.ui.adapter.VpnProfileAdapter;
 import pl.enterprise.vpn.client.utils.Constants;
-
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
 
 import static pl.enterprise.vpn.client.logic.ManagedConfigurationContract.Controller.ALLOW_MODIFY_VPN_PROFILE;
 
@@ -100,6 +100,7 @@ public class VpnProfileListFragment extends Fragment
 			}
 		}
 	};
+	private ActionMenuShowListener actionMenuListener;
 
 	/**
 	 * The activity containing this fragment should implement this interface
@@ -107,6 +108,12 @@ public class VpnProfileListFragment extends Fragment
 	public interface OnVpnProfileSelectedListener {
 		void onVpnProfileSelected(VpnProfile profile);
 	}
+
+	public interface ActionMenuShowListener {
+		void onActionMenuCreate();
+		void onActionMenuDestroy();
+	}
+
 
 	@Override
 	public void onInflate(Context context, AttributeSet attrs, Bundle savedInstanceState)
@@ -183,6 +190,10 @@ public class VpnProfileListFragment extends Fragment
 		{
 			mListener = (OnVpnProfileSelectedListener)context;
 		}
+
+		if (context instanceof ActionMenuShowListener) {
+			actionMenuListener = (ActionMenuShowListener) context;
+		}
 	}
 
 	@Override
@@ -230,6 +241,11 @@ public class VpnProfileListFragment extends Fragment
 		@Override
 		public void onDestroyActionMode(ActionMode mode)
 		{
+			actionMenuListener.onActionMenuDestroy();
+			for (Integer integer : mSelected) {
+				mListView.getChildAt(integer).setBackgroundColor(getResources().getColor(R.color.white));
+			}
+			mSelected.clear();
 		}
 
 		@Override
@@ -240,7 +256,7 @@ public class VpnProfileListFragment extends Fragment
 			mEditProfile = menu.findItem(R.id.edit_profile);
 			mSelected = new HashSet<>();
 			mode.setTitle(R.string.select_profiles);
-
+			actionMenuListener.onActionMenuCreate();
 			return true;
 		}
 
@@ -293,11 +309,12 @@ public class VpnProfileListFragment extends Fragment
 			if (checked)
 			{
 				mSelected.add(position);
-				mListView.getChildAt(position).setBackgroundColor(getResources().getColor(R.color.gray));
+				mListView.getChildAt(position).setBackgroundColor(getResources().getColor(R.color.text_gray));
 			}
 			else
 			{
 				mSelected.remove(position);
+				mListView.getChildAt(position).setBackgroundColor(getResources().getColor(R.color.white));
 			}
 			final int checkedCount = mSelected.size();
 			mEditProfile.setEnabled(checkedCount == 1);

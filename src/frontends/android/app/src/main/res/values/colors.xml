@@ -34,7 +34,9 @@
 
     <color name="pressed">#5a5a5a</color>
 
-    <color name="white">#fbfbfb</color>
-    <color name="gray">#58595b</color>
+    <color name="white">#FFFFFF</color>
+    <color name="status_gray">#fbfbfb</color>
+    <color name="divider_gray">#ACACAC</color>
+    <color name="text_gray">#58595b</color>
     <color name="red">#d23636</color>
 </resources>

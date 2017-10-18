@@ -37,6 +37,6 @@
         android:layout_marginStart="15dp"
         android:textSize="20sp"
         android:text="@string/no_profiles"
-        android:textColor="@color/gray"/>
+        android:textColor="@color/text_gray"/>
 
 </FrameLayout>

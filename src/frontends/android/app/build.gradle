@@ -10,28 +10,11 @@ android {
         applicationId "pl.enterprise.vpn.client"
         minSdkVersion 21
         targetSdkVersion 22
-        versionCode 48
-        versionName "1.9.4"
+        versionCode 3
+        versionName "1.0.2"
         multiDexEnabled true
-    }
-
-    productFlavors {
-        strongswan {
-            applicationId = "pl.enterprise.vpn.client"
-            minSdkVersion 21
-            targetSdkVersion 22
-            versionCode 48
-            versionName "1.9.4"
-        }
-        strongswanProgetTest {
-            applicationId = "test.vpn.enterprise.client"
-            minSdkVersion 21
-            targetSdkVersion 22
-            versionCode 3
-            versionName "1.0.2"
-            lintOptions {
-                disable 'MissingTranslation'
-            }
+        lintOptions {
+            disable 'MissingTranslation'
         }
     }
 

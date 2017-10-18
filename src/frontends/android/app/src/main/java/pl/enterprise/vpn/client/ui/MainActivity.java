@@ -35,6 +35,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDialogFragment;
+import android.support.v7.widget.Toolbar;
 import android.text.format.Formatter;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -43,6 +44,10 @@ import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import pl.enterprise.vpn.client.R;
 import pl.enterprise.vpn.client.data.Prefs;
@@ -55,13 +60,9 @@ import pl.enterprise.vpn.client.logic.VpnStateService;
 import pl.enterprise.vpn.client.logic.VpnStateService.State;
 import pl.enterprise.vpn.client.ui.VpnProfileListFragment.OnVpnProfileSelectedListener;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-
 import static pl.enterprise.vpn.client.logic.ManagedConfigurationContract.Controller.CLOSE_APP_AFTER_CONNECT;
 
-public class MainActivity extends AppCompatActivity implements OnVpnProfileSelectedListener
+public class MainActivity extends AppCompatActivity implements OnVpnProfileSelectedListener, VpnProfileListFragment.ActionMenuShowListener
 {
 	public static final String CONTACT_EMAIL = "android@strongswan.org";
 	public static final String START_PROFILE = "org.strongswan.android.action.START_PROFILE";
@@ -114,11 +115,13 @@ public class MainActivity extends AppCompatActivity implements OnVpnProfileSelec
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 
+		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+		toolbar.setBackgroundColor(getResources().getColor(R.color.primary));
+		setSupportActionBar(toolbar);
 		ActionBar bar = getSupportActionBar();
+		bar.setTitle("");
 		bar.setDisplayShowHomeEnabled(true);
-		bar.setDisplayShowTitleEnabled(false);
-//		bar.setIcon(R.drawable.ic_launcher);
-		bar.setIcon(R.mipmap.test_launcher);
+		bar.setIcon(R.drawable.icon_white);
 
 		this.bindService(new Intent(this, VpnStateService.class),
 						 mServiceConnection, Service.BIND_AUTO_CREATE);
@@ -184,26 +187,7 @@ public class MainActivity extends AppCompatActivity implements OnVpnProfileSelec
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item)
 	{
-		switch (item.getItemId())
-		{
-			case R.id.menu_import_profile:
-				Intent intent = new Intent(this, VpnProfileImportActivity.class);
-				startActivity(intent);
-				return true;
-			case R.id.menu_manage_certs:
-				Intent certIntent = new Intent(this, TrustedCertificatesActivity.class);
-				startActivity(certIntent);
-				return true;
-			case R.id.menu_crl_cache:
-				clearCRLs();
-				return true;
-			case R.id.menu_show_log:
-				Intent logIntent = new Intent(this, LogActivity.class);
-				startActivity(logIntent);
-				return true;
-			default:
-				return super.onOptionsItemSelected(item);
-		}
+		return super.onOptionsItemSelected(item);
 	}
 
 	/**
@@ -407,6 +391,16 @@ public class MainActivity extends AppCompatActivity implements OnVpnProfileSelec
 		CRLCacheDialog dialog = new CRLCacheDialog();
 		dialog.setArguments(args);
 		dialog.show(this.getSupportFragmentManager(), DIALOG_TAG);
+	}
+
+	@Override
+	public void onActionMenuCreate() {
+		getSupportActionBar().hide();
+	}
+
+	@Override
+	public void onActionMenuDestroy() {
+		getSupportActionBar().show();
 	}
 
 	/**

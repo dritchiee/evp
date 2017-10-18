@@ -42,7 +42,7 @@
             android:layout_marginRight="5dp"
             android:gravity="top"
             android:text="@string/state_label"
-            android:textColor="@color/gray"
+            android:textColor="@color/text_gray"
             android:textSize="20sp" />
 
         <TextView
@@ -61,7 +61,7 @@
             android:layout_marginRight="5dp"
             android:gravity="top"
             android:text="@string/profile_label"
-            android:textColor="@color/gray"
+            android:textColor="@color/text_gray"
             android:textSize="20sp"
             android:visibility="gone" >
         </TextView>
@@ -100,16 +100,4 @@
         android:indeterminate="true"
         android:visibility="gone"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal" />
-
-    <!--&lt;!&ndash;<Button&ndash;&gt;-->
-        <!--androidroid:id="@+id/action"&ndash;&gt;-->
-        <!--androidroid:layout_width="match_parent"&ndash;&gt;-->
-        <!--androidroid:layout_height="wrap_content"&ndash;&gt;-->
-        <!--androidroid:layout_marginBottom="10dp"&ndash;&gt;-->
-        <!--androidroid:layout_marginLeft="20dp"&ndash;&gt;-->
-        <!--androidroid:layout_marginRight="20dp"&ndash;&gt;-->
-        <!--androidroid:text="@string/disconnect"&ndash;&gt;-->
-        <!--&lt;!&ndash;stylandroidroid:attr/borderlessButtonStyle" >&ndash;&gt;-->
-    <!--&lt;!&ndash;</Button>&ndash;&gt;-->
-
 </LinearLayout>

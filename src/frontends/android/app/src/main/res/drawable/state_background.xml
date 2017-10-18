@@ -18,14 +18,14 @@
     <item>
         <shape>
             <solid
-                android:color="@color/panel_separator" />
+                android:color="@color/divider_gray" />
         </shape>
     </item>
 
     <item android:bottom="2dp">
         <shape>
             <solid
-                android:color="@color/white" />
+                android:color="@color/status_gray" />
         </shape>
     </item>
 

@@ -27,7 +27,7 @@
     <application
         android:name="pl.enterprise.vpn.client.logic.StrongSwanApplication"
         android:allowBackup="false"
-        android:icon="@mipmap/test_launcher"
+        android:icon="@drawable/icon_violet"
         android:label="@string/app_name"
         android:manageSpaceActivity="pl.enterprise.vpn.client.ui.ManageSpaceActivity"
         android:theme="@style/AppTheme">
@@ -39,7 +39,8 @@
         <activity
             android:name="pl.enterprise.vpn.client.ui.MainActivity"
             android:label="@string/main_activity_name"
-            android:launchMode="singleTop">
+            android:launchMode="singleTop"
+            android:theme="@style/AppThemeMain">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
