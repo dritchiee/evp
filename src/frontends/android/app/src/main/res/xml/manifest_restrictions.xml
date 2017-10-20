@@ -32,7 +32,7 @@
         android:defaultValue=""
         android:description="@string/profile_gateway_hint"
         android:restrictionType="string"
-        android:title="@string/profile_gateway_label"/>
+        android:title="@string/profile_server"/>
 
     <restriction
         android:key="vpn_type"
@@ -41,13 +41,6 @@
         android:title="@string/profile_vpn_type_label"
         android:entries="@array/vpn_types"
         android:entryValues="@array/vpn_types_values"/>
-
-    <!--<restriction-->
-        androidroid:key="user_cert_alias"-->
-        androidroid:defaultValue=""-->
-        androidroid:restrictionType="string"-->
-        androidroid:title="@string/user_cert_alias"-->
-        androidroid:description="@string/user_cert_alias"/>-->
 
     <restriction
         android:key="user_cert_data"
@@ -136,13 +129,15 @@
         android:key="advanced_block_ipv4"
         android:defaultValue="false"
         android:restrictionType="bool"
-        android:title="@string/profile_split_tunnelingv4_title"/>
+        android:title="@string/profile_split_tunnelingv4_title"
+        android:description="@string/considered_with_advanced_settings"/>
 
     <restriction
         android:key="advanced_block_ipv6"
         android:defaultValue="false"
         android:restrictionType="bool"
-        android:title="@string/profile_split_tunnelingv6_title"/>
+        android:title="@string/profile_split_tunnelingv6_title"
+        android:description="@string/considered_with_advanced_settings"/>
 
     <restriction
         android:key="advanced_applications_behavior"

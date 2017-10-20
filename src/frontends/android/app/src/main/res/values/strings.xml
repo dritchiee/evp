@@ -196,9 +196,9 @@
     <string name="advanced_send_cert_request_description">Certificate requests are sent for all available or selected CA certificates. To reduce the size of the IKE_AUTH message this can be disabled. However, this only works if the server sends its certificate even if it didn\'t receive any certificate requests. This setting is only considered if \'Use advanced settings\' is checked</string>
 
     <string name="advanced_subnets_whitelist_title">Subnets whitelist</string>
-    <string name="advanced_subnets_whitelist_description">Only route traffic to specific subnets via VPN, everything else is routed as if there was no VPN (separated by spaces, e.g. \"192.168.1.0/24 2001:db8::/64\"). This setting is only considered if \'Use advanced settings\' is checked</string>
+    <string name="advanced_subnets_whitelist_description">Only route traffic to specific subnets via VPN, everything else is routed as if there was no VPN (separated by spaces, e.g. 192.168.1.0/24 2001:db8::/64). This setting is only considered if \'Use advanced settings\' is checked</string>
     <string name="advanced_subnets_blackist_title">Subnets blacklist</string>
-    <string name="advanced_subnets_blackist_description">Traffic to these subnets will not be routed via VPN, but as if there was no VPN (separated by spaces, e.g. \"192.168.1.0/24 2001:db8::/64\"). This setting is only considered if \'Use advanced settings\' is checked</string>
+    <string name="advanced_subnets_blackist_description">Traffic to these subnets will not be routed via VPN, but as if there was no VPN (separated by spaces, e.g. 192.168.1.0/24 2001:db8::/64). This setting is only considered if \'Use advanced settings\' is checked</string>
 
     <string name="advanced_applications_behavior_description">When chose other option than "All applications use the VPN" package name list shouldn\'t be empty. This setting is only considered if \'Use advanced settings\' is checked</string>
     <string name="advanced_applications_behavior_title">Other applications behavior when VPN is connected.</string>
@@ -215,4 +215,5 @@
     <string name="p12_user_cert_data_description">Base64 encoded user certificate data</string>
     <string name="p12_user_cert_password_title">Password to open PKCS12</string>
     <string name="p12_user_cert_password_description">Password to open PKCS12</string>
+    <string name="considered_with_advanced_settings">This setting is only considered if \'Use advanced settings\' is checked</string>
 </resources>
